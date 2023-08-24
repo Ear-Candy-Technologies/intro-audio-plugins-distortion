@@ -1,15 +1,6 @@
-/*
-  ==============================================================================
-
-    This file contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-//==============================================================================
 DemoDistorAudioProcessor::DemoDistorAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
@@ -24,9 +15,8 @@ DemoDistorAudioProcessor::DemoDistorAudioProcessor()
 {
 }
 
-DemoDistorAudioProcessor::~DemoDistorAudioProcessor()
-{
-}
+DemoDistorAudioProcessor::~DemoDistorAudioProcessor() {}
+
 juce::AudioProcessorValueTreeState::ParameterLayout DemoDistorAudioProcessor::createParameters()
 {
     // Esto es un comentario
@@ -40,7 +30,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout DemoDistorAudioProcessor::cr
     return params;
     
 }
-//==============================================================================
+
 const juce::String DemoDistorAudioProcessor::getName() const
 {
     return JucePlugin_Name;
@@ -98,11 +88,8 @@ const juce::String DemoDistorAudioProcessor::getProgramName (int index)
     return {};
 }
 
-void DemoDistorAudioProcessor::changeProgramName (int index, const juce::String& newName)
-{
-}
+void DemoDistorAudioProcessor::changeProgramName (int index, const juce::String& newName) {}
 
-//==============================================================================
 void DemoDistorAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
@@ -144,10 +131,11 @@ bool DemoDistorAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 void DemoDistorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
+    
     // Obtengo Parametros del usuario
-    float inputValue = *apvts.getRawParameterValue("input");
-    float gainValue = *apvts.getRawParameterValue("gain");
-    float outputValue = *apvts.getRawParameterValue("output");
+    float inputValue  = *apvts.getRawParameterValue ("input");
+    float gainValue   = *apvts.getRawParameterValue ("gain");
+    float outputValue = *apvts.getRawParameterValue ("output");
     
     // Inicio procesamiento
     for (int channel = 0; channel < buffer.getNumChannels(); channel++)
@@ -181,8 +169,8 @@ bool DemoDistorAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* DemoDistorAudioProcessor::createEditor()
 {
-    // return new DemoDistorAudioProcessorEditor (*this);
-    return new juce::GenericAudioProcessorEditor (*this);
+    return new DemoDistorAudioProcessorEditor (*this);
+    //return new juce::GenericAudioProcessorEditor (*this);
 }
 
 //==============================================================================

@@ -1,25 +1,10 @@
-/*
-  ==============================================================================
-
-    This file contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
-
 #pragma once
-
 #include <JuceHeader.h>
 
-//==============================================================================
-/**
-*/
-class DemoDistorAudioProcessor  : public juce::AudioProcessor
-                            #if JucePlugin_Enable_ARA
-                             , public juce::AudioProcessorARAExtension
-                            #endif
+class DemoDistorAudioProcessor : public juce::AudioProcessor
 {
 public:
-    //==============================================================================
+    
     DemoDistorAudioProcessor();
     ~DemoDistorAudioProcessor() override;
 
@@ -60,6 +45,6 @@ public:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
 
 private:
-    //==============================================================================
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DemoDistorAudioProcessor)
 };
