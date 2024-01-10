@@ -59,7 +59,7 @@ void DemoDistorAudioProcessorEditor::paint (juce::Graphics& g)
     juce::Rectangle<int> titleRect { 0, 0, getWidth(), (int) (getHeight() * 0.2f) };
     
     g.setFont  (24.0f);
-    g.drawText ("Demo distortion", titleRect, juce::Justification::centred);
+    g.drawText ("Intro distortion", titleRect, juce::Justification::centred);
 }
 
 void DemoDistorAudioProcessorEditor::resized()
